@@ -1,4 +1,6 @@
-# Design
+# System Prompt Design
+
+Why CLAUDE.md is structured the way it is — design decisions, architecture, and positioning of the core research artifact.
 
 ## The Core Artifact
 

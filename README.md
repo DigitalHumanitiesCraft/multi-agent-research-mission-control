@@ -96,7 +96,7 @@ multi-agent-research-mission-control/
 │
 │  Documentation
 ├── README.md
-├── DESIGN.md                  ← Architecture decisions and positioning
+├── SYSTEM-PROMPT-DESIGN.md    ← Why CLAUDE.md is designed the way it is
 ├── journal.md                 ← Research journal (chronological)
 ├── V05-DESIGN.md              ← Design rationale v0.4 → v0.5
 │
