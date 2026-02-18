@@ -1,0 +1,87 @@
+/* Forschungsleitstelle — Design Tokens */
+
+:root {
+  /* Background */
+  --bg-primary: #0f1117;
+  --bg-secondary: #1a1d27;
+  --bg-card: #222633;
+  --bg-card-hover: #2a2e3d;
+  --bg-panel: #181b24;
+  --bg-input: #1a1d27;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Text */
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-inverse: #0f1117;
+
+  /* Borders */
+  --border: #2e3344;
+  --border-focus: #6366f1;
+
+  /* Mode Colors */
+  --mode-idle: #6B7280;
+  --mode-planning: #3B82F6;
+  --mode-working: #10B981;
+  --mode-review: #F59E0B;
+  --mode-blocked: #EF4444;
+  --mode-paused: #9CA3AF;
+  --mode-done: #6EE7B7;
+  --mode-infra: #8B5CF6;
+
+  /* Accents */
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* Typography */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 15px;
+  --font-size-xl: 18px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms ease;
+}
+
+/* Light theme (toggle) */
+[data-theme="light"] {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f4f6;
+  --bg-panel: #f3f4f6;
+  --bg-input: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --border: #e4e4e7;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

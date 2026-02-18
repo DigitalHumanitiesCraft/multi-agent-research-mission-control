@@ -1,0 +1,128 @@
+{
+  "lanes": [
+    {
+      "number": 1,
+      "name": "VetMedAI-Eval",
+      "scope": "Evaluation-Pipeline: Veterinärmedizinischer LLM-Diagnoseassistent",
+      "mode": "WORKING",
+      "type": "project",
+      "next": "Benchmark-Suite gegen GPT-4o und Llama-3 auf VetPath-Dataset ausführen",
+      "horizon": { "date": "2026-03-01", "label": "ECVIM Submission" },
+      "blockers": [],
+      "deps": [
+        { "from": 1, "to": 2, "type": "output", "status": "pending" }
+      ],
+      "updates": [
+        { "date": "2026-02-15T09:00:00Z", "text": "Lane erstellt. Mode: PLANNING" },
+        { "date": "2026-02-16T14:00:00Z", "text": "Mode: PLANNING → WORKING" },
+        { "date": "2026-02-17T11:00:00Z", "text": "VetPath-Dataset (1.2k Fälle) aufbereitet, Eval-Harness konfiguriert" },
+        { "date": "2026-02-18T09:30:00Z", "text": "Erste Testläufe GPT-4o: Accuracy 78%, F1 0.72 auf Subset (n=200)" }
+      ],
+      "decisions": [
+        "[2026-02-16] Entscheidung: Accuracy + F1 + klinische Relevanz-Score als Metriken. Begründung: Reine Accuracy bildet veterinärmedizinische Schwere nicht ab.",
+        "[2026-02-17] Entscheidung: VetPath statt PubMedQA. Begründung: Domänenspezifische Fälle statt generischer Biomedizin."
+      ],
+      "cluster": null,
+      "archived": false
+    },
+    {
+      "number": 2,
+      "name": "Ethikantrag",
+      "scope": "Ethikkommission-Antrag für retrospektive klinische Datennutzung",
+      "mode": "BLOCKED",
+      "type": "project",
+      "next": "Einreichung nach Integration des Ethikkommission-Feedbacks",
+      "horizon": { "date": "2026-02-28", "label": "Ethikkommission Sitzung" },
+      "blockers": [
+        { "description": "Rückmeldung der Ethikkommission zum Vorentwurf ausstehend", "since": "2026-02-16T00:00:00Z" }
+      ],
+      "deps": [],
+      "updates": [
+        { "date": "2026-02-14T10:00:00Z", "text": "Lane erstellt. Mode: WORKING" },
+        { "date": "2026-02-15T16:00:00Z", "text": "Vorentwurf an Ethikkommission gesendet" },
+        { "date": "2026-02-16T09:00:00Z", "text": "Mode: WORKING → BLOCKED. Warte auf Feedback." }
+      ],
+      "decisions": [
+        "[2026-02-15] Entscheidung: Retrospektive Analyse statt prospektive Studie. Begründung: Schnellere Genehmigung, ausreichend für Proof-of-Concept."
+      ],
+      "cluster": null,
+      "archived": false
+    },
+    {
+      "number": 3,
+      "name": "Datenpipeline",
+      "scope": "FHIR R4 Daten-Ingestion und Anonymisierung für VetMed-Klinikdaten",
+      "mode": "PLANNING",
+      "type": "project",
+      "next": "Schema-Mapping FHIR R4 → internes Eval-Format spezifizieren",
+      "horizon": null,
+      "blockers": [],
+      "deps": [
+        { "from": 3, "to": 2, "type": "output", "status": "pending" }
+      ],
+      "updates": [
+        { "date": "2026-02-17T10:00:00Z", "text": "Lane erstellt. Mode: PLANNING" },
+        { "date": "2026-02-17T14:00:00Z", "text": "FHIR R4 Spezifikation gesichtet, relevante Ressource-Typen identifiziert" }
+      ],
+      "decisions": [],
+      "cluster": null,
+      "archived": false
+    },
+    {
+      "number": 4,
+      "name": "Literaturreview",
+      "scope": "Systematic Review: AI-gestützte Diagnostik in der Veterinärmedizin",
+      "mode": "REVIEW",
+      "type": "project",
+      "next": "Operator-Review der Inclusion/Exclusion-Kriterien und Suchstrategie",
+      "horizon": null,
+      "blockers": [],
+      "deps": [],
+      "updates": [
+        { "date": "2026-02-14T09:00:00Z", "text": "Lane erstellt. Mode: WORKING" },
+        { "date": "2026-02-16T15:00:00Z", "text": "147 Papers identifiziert, 23 nach Abstract-Screening eingeschlossen" },
+        { "date": "2026-02-17T10:00:00Z", "text": "Mode: WORKING → REVIEW. Suchstrategie + Kriterien zur Prüfung bereit." }
+      ],
+      "decisions": [
+        "[2026-02-14] Entscheidung: Fokus auf diagnostische Bildgebung + Laborwerte. Begründung: Therapeutische Entscheidungsunterstützung ist separater Scope."
+      ],
+      "cluster": null,
+      "archived": false
+    },
+    {
+      "number": 5,
+      "name": "Obsidian-Vault",
+      "scope": "Veterinärmedizinische Domänen-Ontologie, Meeting-Protokolle, Literatur-DB",
+      "mode": "IDLE",
+      "type": "infra",
+      "next": "",
+      "horizon": null,
+      "blockers": [],
+      "deps": [],
+      "updates": [
+        { "date": "2026-02-14T09:00:00Z", "text": "Infra-Lane erstellt" }
+      ],
+      "decisions": [],
+      "cluster": null,
+      "archived": false
+    }
+  ],
+  "synthesis": [
+    {
+      "id": "s1",
+      "category": "methodology",
+      "insight": "Eval-Framework (L1) und Diagnosekategorien aus Literaturreview (L4) konvergieren auf dieselbe Taxonomie — gemeinsames Klassifikationsschema extrahieren",
+      "lanes": [1, 4],
+      "created": "2026-02-17T12:00:00Z"
+    },
+    {
+      "id": "s2",
+      "category": "finding",
+      "insight": "Ethikantrag-Blocker (L2) kaskadiert: Datenpipeline (L3) und klinische Evaluation (L1) können ohne Freigabe nicht auf Echtdaten testen",
+      "lanes": [1, 2, 3],
+      "created": "2026-02-17T15:00:00Z"
+    }
+  ],
+  "output": { "type": null, "target": null, "content": "", "timestamp": null },
+  "session": { "id": "vetmed-demo", "lastSnapshot": "2026-02-18T09:00:00Z" }
+}

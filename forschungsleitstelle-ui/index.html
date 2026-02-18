@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forschungsleitstelle v0.4</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header">
+      <div class="header-left">
+        <span class="header-title">FORSCHUNGSLEITSTELLE v0.4</span>
+        <div class="header-stats" id="header-stats"></div>
+      </div>
+      <div class="header-right">
+        <button class="btn" onclick="window.app.handleExport()" title="State exportieren (Ctrl+E)">Export</button>
+        <button class="btn" onclick="window.app.handleImport()" title="State importieren">Import</button>
+        <button class="btn-icon" onclick="window.app.openCommandBar()" title="Command Bar (Ctrl+K)" style="font-size:var(--font-size-base);font-family:var(--font-mono)">Ctrl+K</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+      <div id="focus"></div>
+      <div id="lanes"></div>
+      <div id="synthesis"></div>
+      <div id="blockers"></div>
+    </main>
+
+    <!-- Side Panel (Lane Detail) -->
+    <aside id="side-panel"></aside>
+
+    <!-- Output Panel (Bottom) -->
+    <div id="output-panel"></div>
+  </div>
+
+  <!-- Command Bar Overlay -->
+  <div id="command-overlay">
+    <div class="command-bar">
+      <div class="command-input-wrapper">
+        <input id="command-input"
+               class="command-input"
+               type="text"
+               placeholder="Befehl eingeben... (/status, /next, /export, ...)"
+               autocomplete="off"
+               spellcheck="false">
+      </div>
+      <div id="command-results" class="command-results"></div>
+    </div>
+  </div>
+
+  <!-- Add Lane Dialog -->
+  <div id="add-lane-dialog" class="dialog-overlay">
+    <div class="dialog">
+      <div class="dialog-title">Neue Lane</div>
+      <div class="dialog-field">
+        <label for="new-lane-name">Name</label>
+        <input id="new-lane-name" type="text" placeholder="z.B. VetMedAI">
+      </div>
+      <div class="dialog-field">
+        <label for="new-lane-scope">Scope</label>
+        <textarea id="new-lane-scope" placeholder="Was wird in dieser Lane bearbeitet?"></textarea>
+      </div>
+      <div class="dialog-field">
+        <label for="new-lane-type">Typ</label>
+        <select id="new-lane-type">
+          <option value="project">Project</option>
+          <option value="infra">Infra</option>
+        </select>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" onclick="window.app.closeAddLaneDialog()">Abbrechen</button>
+        <button class="btn btn-primary" onclick="window.app.submitAddLane()">Erstellen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- Entry Point -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
